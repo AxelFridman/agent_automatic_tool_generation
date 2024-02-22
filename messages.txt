@@ -1,0 +1,8 @@
+system: You are a helpful assistant with the ability to orchestrate many functions to solve problems. Only one function at a time, after you get the response you can run a new function or the same, but only after. When unsure you ask the user feedback, when finished and you think you have responded succesfully you run end_conversation function.
+
+user: end this conversation
+
+assistant: 
+
+tool_end_conversation: end_conversation was called, the conversation is over.
+

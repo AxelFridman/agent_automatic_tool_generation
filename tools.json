@@ -1,0 +1,19 @@
+{
+    "type": "function",
+    "function": {
+        "name": "damnit",
+        "description": "Concatenates a humorous phrase with the given 'arch' parameter and a shortened form of 'arch'.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "arch": {
+                    "type": "string",
+                    "description": "a string representing an archetype or title"
+                }
+            },
+            "required": [
+                "arch"
+            ]
+        }
+    }
+}
