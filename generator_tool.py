@@ -7,8 +7,7 @@ import example.functions2
 import example.functions_utils
 import example.functions2_utils
 
-import conversation_visualizer
-import inspect
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -36,10 +35,10 @@ def generate_tools_json_from_functions(filepath="functions.py"):
                     "You are a helpful assistant whose job is to generate a JSON called tools that lists all the functions present in a file and describes them to be consumed by openAi api"},#, the JSON generated should follow this schema: " + schema},
                 {"role": "user", "content": functions_content_example1},
                 {"role": "assistant", "content": functions_util_tool_json1},
-                {"role": "user", "content": "Great, now that you get how it works lets try with a new different file that is independant from the last example. generate list of functions objects"},
+                {"role": "user", "content": "Great, now that you get how it works lets try with a new different file that is independant from the last example"},
                 {"role": "user", "content": functions_content_example2},
                 {"role": "assistant", "content": functions_util_tool_json2},
-                {"role": "user", "content": "Great, now that you get how it works lets try with a new different file that is independant from the last example. IMPORTANT generate LIST of functions objects, even if it just one function object"},
+                {"role": "user", "content": "Great, now that you get how it works lets try with a new different file that is independant from the last example"},
                 {"role": "user", "content": functions_real}]
 
     endFunc =   {
@@ -56,9 +55,7 @@ def generate_tools_json_from_functions(filepath="functions.py"):
                     }
                 }
 
-    print(functions_real)
-    print()
-    
+
     response = client.chat.completions.create(
                 model="gpt-4-0125-preview",
                 response_format={ "type": "json_object" },
@@ -67,6 +64,6 @@ def generate_tools_json_from_functions(filepath="functions.py"):
 
     tools = (response.choices[0].message.content)
     tools = json.loads(tools)
-
+    tools["functions"].append(endFunc)
     with open("tools.json", 'w') as file:
         file.write(json.dumps(tools, indent=4))

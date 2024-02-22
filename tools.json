@@ -1,19 +1,104 @@
 {
-    "type": "function",
-    "function": {
-        "name": "damnit",
-        "description": "Concatenates a humorous phrase with the given 'arch' parameter and a shortened form of 'arch'.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "arch": {
-                    "type": "string",
-                    "description": "a string representing an archetype or title"
+    "functions": [
+        {
+            "type": "function",
+            "function": {
+                "name": "run_on_terminal",
+                "description": "Executes a given command on the local terminal and returns the result as a string. If an error occurs during the execution, it returns a string describing the error.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "command": {
+                            "type": "string",
+                            "description": "The command to be executed on the terminal."
+                        }
+                    },
+                    "required": [
+                        "command"
+                    ]
                 }
-            },
-            "required": [
-                "arch"
-            ]
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_user_feedback",
+                "description": "Simulates getting feedback from a user by displaying a question and awaiting the user's input as a response.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "question": {
+                            "type": "string",
+                            "description": "The question that will be asked to the user."
+                        }
+                    },
+                    "required": [
+                        "question"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_file_content",
+                "description": "Reads and returns the entire content of the specified file as a string. If an error occurs, it returns a string describing the error.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "filepath": {
+                            "type": "string",
+                            "description": "The path to the file from which content is to be read."
+                        }
+                    },
+                    "required": [
+                        "filepath"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_directory_tree",
+                "description": "Returns a string representing a tree structure of all the files and directories under the current working directory.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_personal_information_about_user",
+                "description": "Provides personal information for a given user name if available. If the user's information is not available, a default message is returned.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "user_name": {
+                            "type": "string",
+                            "description": "The name of the user to retrieve information for."
+                        }
+                    },
+                    "required": [
+                        "user_name"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "end_conversation",
+                "description": "Ends the conversation. Run only when the conversation is finished and the user is satisfied with the result",
+                "parameters": {
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                }
+            }
         }
-    }
+    ]
 }

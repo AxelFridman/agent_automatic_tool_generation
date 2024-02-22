@@ -60,7 +60,7 @@ def get_directory_tree():
     return str(root_node)
 
 
-tools = [
+tools = {"functions": [
                 {
                     "type": "function",
                     "function": {
@@ -126,3 +126,4 @@ tools = [
                     }
                 }
             ]
+}

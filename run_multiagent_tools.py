@@ -1,11 +1,11 @@
 import os
 from openai import OpenAI
 import json
-import functions_utils
 import conversation_visualizer
 import inspect
 from dotenv import load_dotenv
 import generator_tool
+import functions
 
 load_dotenv()
 OpenAI.api_key = os.getenv('OPENAI_API_KEY')
@@ -18,17 +18,17 @@ def get_tools(path="tools.json"):
     return tools
 
 
-def run_conversation(initialPrompt, maxCicles = 20):
+def run_conversation(initialPrompt, maxCicles = 20, generateTools = True):
     # Step 1: send the conversation and available functions to the model
     messages = [{"role": "system", "content":
                  "You are a helpful assistant with the ability to orchestrate many functions to solve problems. Only one function at a time, after you get the response you can run a new function or the same, but only after. When unsure you ask the user feedback, when finished and you think you have responded succesfully you run end_conversation function."},
                  {"role": "user", "content": initialPrompt}]
     messagesMine =  messages.copy()
-    generator_tool.generate_tools_json_from_functions()
-    tools = get_tools()
-    print(tools)
-    return
-    available_functions = {name: obj for name, obj in inspect.getmembers(functions_utils, inspect.isfunction)}
+    if(generateTools):
+        generator_tool.generate_tools_json_from_functions()
+    tools = get_tools()["functions"]
+
+    available_functions = {name: obj for name, obj in inspect.getmembers(functions, inspect.isfunction)}
     ciclo = 1
     while True:
         print("ciclo "+str(ciclo))
@@ -86,4 +86,6 @@ def run_conversation(initialPrompt, maxCicles = 20):
                 messagesMine.append(data2)
             conversation_visualizer.generate_visualization(messages=messagesMine)
 
-run_conversation(initialPrompt="end this conversation", maxCicles = 20)
+run_conversation(initialPrompt="chat with me like a robot, in order for me to talk ask for my feedback, never end this conversation until i say so",
+                 maxCicles = 20,
+                 generateTools = False)

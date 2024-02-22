@@ -10,7 +10,7 @@ def whichGreater(ergo, beta):
 def takeSquareRoot(pan, myMessage="The square root of the number is: "):
     return myMessage + str(pan ** 0.5)
 
-tools = [
+tools = {"functions": [
                 {
                     "type": "function",
                     "function": {
@@ -62,3 +62,4 @@ tools = [
                     },
                 }
         ]
+}
