@@ -14,8 +14,12 @@ def generate_visualization(messages):
         with open("messages.txt", "a") as file:
             if(mes["content"]==None):
                 mes["content"] = ""
+            mes["content"] = str(mes["content"])
+
             if(mes["role"] == "tool"):
                 mes["role"] = "tool_"+mes["name"]
+                mes["args"] = str(mes["args"])
+
                 mes["content"] = "After running with arguments \n     "+ mes["args"] +"\n      it returned: \n      "+ mes["content"]
 
             else:

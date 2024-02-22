@@ -67,3 +67,5 @@ def generate_tools_json_from_functions(filepath="functions.py"):
     tools["functions"].append(endFunc)
     with open("tools.json", 'w') as file:
         file.write(json.dumps(tools, indent=4))
+
+generate_tools_json_from_functions()

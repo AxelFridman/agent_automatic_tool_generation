@@ -3,33 +3,23 @@
         {
             "type": "function",
             "function": {
-                "name": "myAverage",
-                "description": "Calculates the weighted average of four numbers with specific weights and then rounds the result to three decimal places.",
+                "name": "axel_request",
+                "description": "Processes a message, if it is 'subscribe', returns a success message, otherwise indicates misunderstanding.",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "a": {
-                            "type": "number",
-                            "description": "The first number for the calculation."
+                        "message": {
+                            "type": "string",
+                            "description": "the message to process"
                         },
-                        "b": {
-                            "type": "number",
-                            "description": "The second number for the calculation."
-                        },
-                        "c": {
-                            "type": "number",
-                            "description": "The third number for the calculation."
-                        },
-                        "d": {
-                            "type": "number",
-                            "description": "The fourth number for the calculation."
+                        "end": {
+                            "type": "string",
+                            "description": "an optional end phrase to append to the success message",
+                            "default": " the end"
                         }
                     },
                     "required": [
-                        "a",
-                        "b",
-                        "c",
-                        "d"
+                        "message"
                     ]
                 }
             }
@@ -37,23 +27,18 @@
         {
             "type": "function",
             "function": {
-                "name": "whichGreater",
-                "description": "Compares two values and returns the greater one.",
+                "name": "run_on_terminal",
+                "description": "Executes a given command on the local terminal, capturing and returning the output.",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "a": {
-                            "type": "number",
-                            "description": "The first number to compare."
-                        },
-                        "b": {
-                            "type": "number",
-                            "description": "The second number to compare."
+                        "command": {
+                            "type": "string",
+                            "description": "the command to run on the terminal"
                         }
                     },
                     "required": [
-                        "a",
-                        "b"
+                        "command"
                     ]
                 }
             }
@@ -61,18 +46,68 @@
         {
             "type": "function",
             "function": {
-                "name": "takeSquareRoot",
-                "description": "Calculates and returns the square root of a given number.",
+                "name": "get_user_feedback",
+                "description": "Simulates getting feedback from the user by asking them a question.",
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "a": {
-                            "type": "number",
-                            "description": "The number to calculate the square root of."
+                        "question": {
+                            "type": "string",
+                            "description": "the question to ask the user"
                         }
                     },
                     "required": [
-                        "a"
+                        "question"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_file_content",
+                "description": "Retrieves the content of a specified file as a string.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "filepath": {
+                            "type": "string",
+                            "description": "the path of the file to retrieve content from"
+                        }
+                    },
+                    "required": [
+                        "filepath"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_directory_tree",
+                "description": "Builds and returns a tree structure of the current working directory.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {},
+                    "required": []
+                }
+            }
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "get_personal_information_about_user",
+                "description": "Returns personal information about a specified user if available.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "user_name": {
+                            "type": "string",
+                            "description": "the name of the user to retrieve information about"
+                        }
+                    },
+                    "required": [
+                        "user_name"
                     ]
                 }
             }

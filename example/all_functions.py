@@ -71,11 +71,11 @@ def get_personal_information_about_user(user_name):
         age = "22"
         job = "Software Engineer"
     elif(user_name == "Juan" or user_name == "juan"):
-        name = "Juan Wisnia"
+        name = "Juan W."
         age = "27"
-        job = "ML Engineer"
+        job = "AI Engineer"
     elif(user_name == "chechu" or user_name == "cecilia"):
-        name = "Cecilia Bolaños"
+        name = "Cecilia B."
         age = "24"
         job = "Data Scientist"
     else:

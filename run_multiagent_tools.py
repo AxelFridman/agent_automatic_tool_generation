@@ -87,7 +87,7 @@ def run_conversation(initialPrompt, maxCicles = 20, generateTools = True):
             conversation_visualizer.generate_visualization(messages=messagesMine)
 
 run_conversation(
-                initialPrompt="say Hi and then end the conversation ",
-                #initialPrompt="chat with me like a robot, in order for me to talk ask for my feedback, never end this conversation until i say so",
+                #initialPrompt="do axel request with my message being 'subscribe' ",
+                initialPrompt="chat with me like a robot, in order for me to talk ask for my feedback, never end this conversation until i say so",
                  maxCicles = 20,
-                 generateTools = True)
+                 generateTools = False)
