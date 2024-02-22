@@ -1,11 +1,17 @@
 import os
+import subprocess
 
 def run_on_terminal(command):
     try:
-        result = os.popen(command).read()
+        # Run the command and capture both stdout and stderr
+        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        # Return stdout if the command was successful
+        return result.stdout
+    except subprocess.CalledProcessError as e:
+        # Return stderr if the command failed
+        return f"Error in executing command: {e.stderr}"
     except Exception as e:
-        result = (f"Error in executing command: {e}")
-    return result
+        return f"Unexpected error: {e}"
 
 def get_user_feedback(question):
     """Simulate getting feedback from the user."""
