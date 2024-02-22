@@ -31,7 +31,7 @@ def run_conversation(initialPrompt, maxCicles = 20, generateTools = True):
     available_functions = {name: obj for name, obj in inspect.getmembers(functions, inspect.isfunction)}
     ciclo = 1
     while True:
-        print("ciclo "+str(ciclo))
+        print("cicle "+str(ciclo))
         ciclo = ciclo + 1
         if(ciclo > maxCicles):
             print("maxCicles reached")
@@ -86,6 +86,8 @@ def run_conversation(initialPrompt, maxCicles = 20, generateTools = True):
                 messagesMine.append(data2)
             conversation_visualizer.generate_visualization(messages=messagesMine)
 
-run_conversation(initialPrompt="chat with me like a robot, in order for me to talk ask for my feedback, never end this conversation until i say so",
+run_conversation(
+                initialPrompt="say Hi and then end the conversation ",
+                #initialPrompt="chat with me like a robot, in order for me to talk ask for my feedback, never end this conversation until i say so",
                  maxCicles = 20,
-                 generateTools = False)
+                 generateTools = True)
